@@ -13,8 +13,11 @@ public class Login {
 	public static String username = "ivecluj1";
 	public static String password = "IveParola2";
 	
-	public static String username1 = "ivecluj2";
-	public static String password2 = "IveParola2";
+	public static String wrongUsername = "luj";
+	public static String wrongPassword = "iveparola";
+	
+	//public static String username1 = "ivecluj2";
+	//public static String password2 = "IveParola2";
 	
 	public static final String URL = "https://www.endavauniversity.com/";
 	
@@ -29,7 +32,7 @@ public class Login {
 	  
   }
   
-  @Test
+  @Test(dependsOnMethods = "wrongUsername")
   public void login() {
 	  
 	  driver.findElement(By.id("username")).sendKeys(username);
@@ -58,6 +61,46 @@ public class Login {
   public void afterClass() {
 	  
 	  driver.quit();
+  }
+  
+ 
+
+  @Test(dependsOnMethods = "wrongPassword")
+  public void wrongUsername() {
+	  
+	  driver.findElement(By.id("username")).sendKeys(wrongUsername);
+	  driver.findElement(By.id("password")).sendKeys(password);
+	  driver.findElement(By.id("loginbtn")).click();
+	  
+	  Sleeper.sleepTightInSeconds(5);
+	  
+	  String message = driver.findElement(By.className("error")).getText();
+	  System.out.println(message);
+	  
+	  assert message.contains("Invalid login, please try again") : "You are logged in.";
+	  
+	  System.out.println("Test passed");
+	  
+	  
+  } 
+  
+  @Test
+  public void wrongPassword() {
+	  
+	  driver.findElement(By.id("username")).sendKeys(username);
+	  driver.findElement(By.id("password")).sendKeys(wrongPassword);
+	  driver.findElement(By.id("loginbtn")).click();
+	  
+	  Sleeper.sleepTightInSeconds(5);
+	  
+	  String message = driver.findElement(By.className("error")).getText();
+	  System.out.println(message);
+	  
+	  assert message.contains("Invalid login, please try again") : "You are logged in.";
+	  
+	  System.out.println("Test passed");
+
+  
   }
 
 }

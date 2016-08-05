@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="17008" started-at="2016-08-05T13:58:38Z" finished-at="2016-08-05T13:58:55Z">
+  <suite name="Default suite" duration-ms="39026" started-at="2016-08-05T14:30:50Z" finished-at="2016-08-05T14:31:29Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="17008" started-at="2016-08-05T13:58:38Z" finished-at="2016-08-05T13:58:55Z">
-      <class name="test.login.WrongUsername">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:test.login.WrongUsername@6d8a00e3]" name="beforeClass" is-config="true" duration-ms="9255" started-at="2016-08-05T15:58:38Z" finished-at="2016-08-05T15:58:47Z">
+    <test name="Default test" duration-ms="39026" started-at="2016-08-05T14:30:50Z" finished-at="2016-08-05T14:31:29Z">
+      <class name="test.login.Login">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:test.login.Login@6d8a00e3]" name="beforeClass" is-config="true" duration-ms="11459" started-at="2016-08-05T16:30:50Z" finished-at="2016-08-05T16:31:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="wrongUsername()[pri:0, instance:test.login.WrongUsername@6d8a00e3]" name="wrongUsername" duration-ms="7723" started-at="2016-08-05T15:58:47Z" finished-at="2016-08-05T15:58:55Z">
+        <test-method status="PASS" signature="wrongPassword()[pri:0, instance:test.login.Login@6d8a00e3]" name="wrongPassword" duration-ms="8907" started-at="2016-08-05T16:31:02Z" finished-at="2016-08-05T16:31:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrongPassword -->
+        <test-method status="PASS" signature="wrongUsername()[pri:0, instance:test.login.Login@6d8a00e3]" name="wrongUsername" duration-ms="8198" started-at="2016-08-05T16:31:11Z" depends-on-methods="test.login.Login.wrongPassword" finished-at="2016-08-05T16:31:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wrongUsername -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:test.login.WrongUsername@6d8a00e3]" name="afterClass" is-config="true" duration-ms="0" started-at="2016-08-05T15:58:55Z" finished-at="2016-08-05T15:58:55Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:test.login.Login@6d8a00e3]" name="login" duration-ms="9600" started-at="2016-08-05T16:31:19Z" depends-on-methods="test.login.Login.wrongUsername" finished-at="2016-08-05T16:31:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:test.login.Login@6d8a00e3]" name="afterClass" is-config="true" duration-ms="827" started-at="2016-08-05T16:31:28Z" finished-at="2016-08-05T16:31:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-      </class> <!-- test.login.WrongUsername -->
+      </class> <!-- test.login.Login -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
