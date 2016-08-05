@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="18847" started-at="2016-08-04T14:43:03Z" finished-at="2016-08-04T14:43:22Z">
+  <suite name="Default suite" duration-ms="17008" started-at="2016-08-05T13:58:38Z" finished-at="2016-08-05T13:58:55Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="18847" started-at="2016-08-04T14:43:03Z" finished-at="2016-08-04T14:43:22Z">
-      <class name="test.NewTest">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:test.NewTest@6d8a00e3]" name="setUp" is-config="true" duration-ms="6188" started-at="2016-08-04T16:43:03Z" finished-at="2016-08-04T16:43:09Z">
+    <test name="Default test" duration-ms="17008" started-at="2016-08-05T13:58:38Z" finished-at="2016-08-05T13:58:55Z">
+      <class name="test.login.WrongUsername">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:test.login.WrongUsername@6d8a00e3]" name="beforeClass" is-config="true" duration-ms="9255" started-at="2016-08-05T15:58:38Z" finished-at="2016-08-05T15:58:47Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testGoogle()[pri:0, instance:test.NewTest@6d8a00e3]" name="testGoogle" duration-ms="12598" started-at="2016-08-04T16:43:09Z" finished-at="2016-08-04T16:43:22Z">
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="wrongUsername()[pri:0, instance:test.login.WrongUsername@6d8a00e3]" name="wrongUsername" duration-ms="7723" started-at="2016-08-05T15:58:47Z" finished-at="2016-08-05T15:58:55Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testGoogle -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:test.NewTest@6d8a00e3]" name="tearDown" is-config="true" duration-ms="33" started-at="2016-08-04T16:43:22Z" finished-at="2016-08-04T16:43:22Z">
+        </test-method> <!-- wrongUsername -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:test.login.WrongUsername@6d8a00e3]" name="afterClass" is-config="true" duration-ms="0" started-at="2016-08-05T15:58:55Z" finished-at="2016-08-05T15:58:55Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- test.NewTest -->
+        </test-method> <!-- afterClass -->
+      </class> <!-- test.login.WrongUsername -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
