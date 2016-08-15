@@ -5,7 +5,7 @@ public class Property {
 	public static String username = "ivecluj1";
 	public static String password = "IveParola2";
 	
-	public static String email = "ivecluj.1@endava.com";
+	//public static String email = "ivecluj.1@endava.com";
 	public static String area = "Career Development Discussion";
 	
 	public static String textCareer = "Career";

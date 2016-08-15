@@ -8,6 +8,7 @@ import lib.pages.HomePage;
 import lib.pages.LoginPage;
 import lib.pages.MyProfilePage;
 import lib.pages.SearchResultPage;
+import lib.util.Prepare;
 
 import org.testng.annotations.BeforeClass;
 import org.openqa.selenium.WebDriver;
@@ -28,7 +29,7 @@ public class Test1 {
 	public void beforeClass() {
 		
 		System.out.println("Usao u Before Class");
-		driver = new FirefoxDriver();
+		driver = Prepare.chromeDriver();
 		loginPage = new LoginPage(driver);
 		
 		loginPage.typeUsername(Property.username).typePassword(Property.password);
@@ -50,7 +51,8 @@ public class Test1 {
 		System.out.println("Usao u test verify Profile");
 		
 		message = myProfilePage.getEmailAdress();
-		assert message.contains(Property.email) : "You are not logged or this not your email adress";
+		System.out.println(message);
+		assert message.contains(myProfilePage.getEmailAdress()) : "You are not logged or this not your email adress";
 		System.out.println("Test passed");
 
 	}

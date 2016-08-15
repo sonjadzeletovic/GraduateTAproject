@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+  
+<suite name="test" verbose="1" >
+  <test name="one script" >
+  
+  <groups>
+  	<run>
+  		<include name = "login"/>
+  	</run>
+  </groups>
+  
+  <packages>
+  	<package name= "test.login" />
+  </packages>
+  	
+    <!--classes>
+       <class name="test.login.TNGAnotation"/>                    
+    </classes-->
+  </test>
+</suite>

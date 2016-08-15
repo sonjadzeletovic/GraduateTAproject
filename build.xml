@@ -1,0 +1,49 @@
+<project name="Sample Ant build" basedir=".">
+	<!-- ========== Initialize Properties =================================== -->
+	<!-- set global properties for build -->
+	<property name="basedir" value="." />
+	<property name="lib" value="${basedir}/lib" />
+	<property name="src" value="${basedir}/src" />
+	<property name="bin" value="${basedir}/bin" />
+	<property name="report-dir" value="${basedir}/Test-Report" />
+	<property name="testng-report-dir" value="${report-dir}/TestNGreport" />
+	
+	<!-- ====== Set the classpath ====  -->
+	<path id="classpath">
+		<pathelement location="${bin}" />
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	
+	<!-- Delete directories  -->
+	<target name="delete">
+		<delete dir="${bin}" />
+		<delete dir="${report-dir}" />
+		<echo> Ant Directories deleted  </echo>
+	</target>
+	
+	<!-- Creating directories -->
+	<target name="create" depends="delete">
+		<mkdir dir="${bin}" />
+		<mkdir dir="${report-dir}" />
+		<echo> Ant Directories created  </echo>
+	</target>
+	
+	<!-- Compile the java code from ${src} into ${bin} -->
+	<target name="build" depends="create">
+		<javac srcdir="${src}" classpathref="classpath"  destdir="${bin}" />
+		<echo> Ant Compiled Directory Classes  </echo>
+	</target>
+	
+	<!-- Runs the file and generates Reportng report for TestNG-->
+	<taskdef name="testng" classname="org.testng.TestNGAntTask" classpathref="classpath" />
+	
+	<target name="test"> <!--depends="compile"-->
+		<mkdir dir="${testng-report-dir}" />
+		<testng outputdir="${testng-report-dir}" classpathref="classpath"><!--includeAntRuntime="No" useDefaultListeners="true"-->
+			<xmlfileset dir="${basedir}" includes="testng.xml" />
+		</testng>
+		<echo> Ant Tests executed  </echo>
+	</target>
+</project>

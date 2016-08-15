@@ -7,6 +7,7 @@ import lib.pages.CDDPage;
 import lib.pages.HomePage;
 import lib.pages.LoginPage;
 import lib.pages.SearchResultPage;
+import lib.util.Prepare;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -17,6 +18,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.server.browserlaunchers.Sleeper;
 import org.testng.annotations.AfterClass;
 
+//@Test (groups = {"login"}) 
 public class TNGAnotation {
 	
 	private static WebDriver driver;
@@ -25,10 +27,10 @@ public class TNGAnotation {
 	SearchResultPage searchResult;
 	CDDPage cddPage;
 	
-  @BeforeClass
+  @BeforeClass(alwaysRun = true)
 	  public void beforeClass() {
 	  System.out.println("Usao u Before Class");
-	  driver = new FirefoxDriver();
+	  driver = Prepare.chromeDriver();
 	  loginPage = new LoginPage(driver);
 	  }
   
@@ -39,7 +41,7 @@ public class TNGAnotation {
 	  
 	  }
   
-  @Test
+  @Test (groups = {"login"})
   public void wrongUsername() {
 	  
 	  System.out.println("Test: Neuspesno logovanje invalid user");
@@ -84,7 +86,7 @@ public class TNGAnotation {
   
   } 
  
-  @Test (dependsOnMethods = "wrongPassword")
+  @Test //(dependsOnMethods = "wrongPassword")
   public void login() {
 	  
 	  loginPage.typeUsername(Property.username).typePassword(Property.password); //preko . zbog onog this-a iz LoginPage mozes ovako da pozivas

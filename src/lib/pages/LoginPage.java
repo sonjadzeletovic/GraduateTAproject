@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import lib.data.Property;
 
-public class LoginPage {
+public class LoginPage extends Page{
 	
 	@FindBy(id = "username") //vrsi mapiranje elemenata,da nadjemo element da nam non stop bude dostupan
 	private WebElement usernameInputField;
@@ -20,15 +20,15 @@ public class LoginPage {
 	
 	@FindBy(className = "error")
 	private WebElement errorLabel;
-
-	private WebDriver driver;
+	
+	//private WebDriver driver;
 	
 	public LoginPage(WebDriver driver){ //konstuktor
-		
-		this.driver = driver;
+		super(driver);//pozivas konstruktor nadklase
+		//this.driver = driver;
 		driver.manage().window().maximize();
 		driver.get(Property.URL); //ne mora da kreiras novi objekat da bi pristupio njenim elementima,mozes preko klase jer je static
-		PageFactory.initElements(driver, this);//pravi se stranica,inicijalizira elemente,on ce da prodje kroz svaki findby i da kreira elemente	
+		//PageFactory.initElements(driver, this);//pravi se stranica,inicijalizira elemente,on ce da prodje kroz svaki findby i da kreira elemente	
 		
 	}
 	//da omogucimo kliktanje,upisivanje vrednosti...

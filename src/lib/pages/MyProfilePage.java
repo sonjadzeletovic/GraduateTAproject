@@ -1,29 +1,34 @@
 package lib.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.server.browserlaunchers.Sleeper;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MyProfilePage {
+public class MyProfilePage extends Page{
 	
-	@FindBy(linkText = "ivecluj.1@endava.com")
+	@FindBy (css = "a[href*= 'mailto']") // zvezdica zato sto nije kopiran ceo link
+	//@FindBy(linkText = "ivecluj.1@endava.com") moze i ovako //a[contains(@href,'mailto')]
 	private WebElement emailLabel;
 	
 	@FindBy (linkText = "Career Development Discussion")
 	private WebElement areaLabel;
 	
-	@FindBy(linkText = "Log out")
-	private WebElement logOutFromMyProfile;
 	
-	private WebDriver driver;
+	
+	//private WebDriver driver;
+	
+	private By emailL = new By.ByCssSelector("a[href*= 'mailto']");
 	
 	public MyProfilePage(WebDriver driver){
 		
-		this.driver = driver;
-		Sleeper.sleepTightInSeconds(3);
-		PageFactory.initElements(driver, this);
+		super(driver);
+		//this.driver = driver;
+		//Sleeper.sleepTightInSeconds(3);
+		waitForPageToBeLoaded(driver, emailL, 5);
+		//PageFactory.initElements(driver, this);
 	}
 	
 	/**
@@ -44,11 +49,6 @@ public class MyProfilePage {
 		return areaLabel.getText();
 	}
 	
-	public LoginPage clickLogOut(){
-		logOutFromMyProfile.click();
-		Sleeper.sleepTightInSeconds(3);
-		return new LoginPage(driver);
-		
-	}
+	
 
 }

@@ -9,6 +9,7 @@ import lib.pages.InternalSystemPage;
 import lib.pages.LoginPage;
 import lib.pages.MyProfilePage;
 import lib.pages.SearchResultPage;
+import lib.util.Prepare;
 
 import org.testng.annotations.BeforeClass;
 import org.openqa.selenium.WebDriver;
@@ -30,7 +31,8 @@ public class Test2 {
 	public void beforeClass() {
 
 		System.out.println("Usao u Before Class");
-		driver = new FirefoxDriver();
+		//driver = new FirefoxDriver();
+		driver = Prepare.chromeDriver();
 		loginPage = new LoginPage(driver);
 
 		loginPage.typeUsername(Property.username).typePassword(Property.password);
@@ -50,6 +52,7 @@ public class Test2 {
 		
 		internalSystemPage = homePage.clickOnLinkInternalSystemSelfHelp();
 		message = internalSystemPage.getParagraphDescription();
+		System.out.println(message);
 		assert message.contains("This category contains help materials for Endava") : "Test failed";
 		System.out.println("Test passed");
 	}

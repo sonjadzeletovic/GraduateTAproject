@@ -1,5 +1,6 @@
 package lib.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,18 +9,21 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import lib.data.Property;
+import lib.util.Wait;
 
-public class HomePage {
+public class HomePage extends Page{
 	
-	@FindBy(className = "logininfo")
-	private WebElement loginInfoLabel;
 	
 	@FindBy(id = "shortsearchbox")
-	private WebElement searchInputFild;
+	private WebElement searchInputField;
 	
 	//@FindBy (xpath = "//input[contains (@type,'submit') and contains (@value, 'Go')]")
 	@FindBy (css = "input[type = 'submit'][value = 'Go']")
 	private WebElement Gobutton;
+	
+	private By goBtn = new By.ByCssSelector("input[type = 'submit'][value = 'Go']");
+	
+	private By searchInput = new By.ById("shortsearchbox");
 	
 	//@FindBy (className = "dropdown-toggle")
 	@FindBy (xpath = "//a[contains(@title, 'My Account')]")
@@ -35,24 +39,19 @@ public class HomePage {
 	private WebElement internalSystemSelfHelp;
 	
 
-	private WebDriver driver;
+	//private WebDriver driver;
 	
 
 	public HomePage(WebDriver driver) {
-		this.driver = driver;
-		Sleeper.sleepTightInSeconds(5);
-		PageFactory.initElements(driver, this);
-		
-	}
-/**
- * Get text form login label
- * @return{String}
- */
-	public String getTextFromLoginInfoLabel(){ //kupimo text da bi verifikovali da smo se logovali
-		return loginInfoLabel.getText();
+		super(driver);//poziva se konstruktor nad klase
+		//this.driver = driver;
+		//Sleeper.sleepTightInSeconds(5);
+		waitForPageToBeLoaded(driver, goBtn, 5);// da budem siguran da mi se stranica ucitala,da su svi elementi vidljivi,pa tek onda initelement uradi
+		//PageFactory.initElements(driver, this);
 		
 		
 	}
+	
 	/**
 	 * Type search value into search field
 	 * @param {String}
@@ -60,7 +59,9 @@ public class HomePage {
 	 */
 	
 	public HomePage typeSearchValueIntoSearchField(String value){
-		searchInputFild.sendKeys(value);
+		System.out.println("typeSearchValueIntoSearchField("+value+")");
+		Wait.waitUntilElementPresent(driver,searchInput, 3);
+		searchInputField.sendKeys(value);
 		return this;
 		
 	}
@@ -70,6 +71,7 @@ public class HomePage {
 	 */
 	
 	public SearchResultPage clickOnGoButton(){
+		System.out.println("clickOnGoButton()");
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", Gobutton);
 		//Gobutton.click();
