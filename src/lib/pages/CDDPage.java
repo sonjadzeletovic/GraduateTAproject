@@ -58,10 +58,10 @@ public class CDDPage extends Page{
 	 */
 	public boolean isFirstCheckBoxSelected(){
 		String atributeValue = checkBoxFirst.getAttribute("title"); //da vidi da li je cekiran check box
-		if (atributeValue.contains("Mark not as complete")){
-			return true;
-		} else 
+		if (atributeValue.contains("Mark as complete")){
 			return false;
+		} else 
+			return true;
 			
 	}
 	
